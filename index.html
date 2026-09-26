@@ -50,7 +50,7 @@ header{
 nav{display:flex; align-items:center; justify-content:space-between; padding:16px 24px; max-width:1080px; margin:0 auto;}
 .brand{display:flex; align-items:center; gap:8px; font-weight:800; font-size:18px; letter-spacing:-0.02em;}
 .brand .fox{font-size:20px;}
-nav .links{display:flex; gap:28px; font-size:14px; font-weight:600; color:var(--ink-soft);}
+nav .links{gap:28px; font-size:14px; font-weight:600; color:var(--ink-soft);}
 nav .links a:hover{color:var(--violet);}
 .btn{
   display:inline-flex; align-items:center; gap:6px; background:var(--violet); color:var(--on-violet);
@@ -525,10 +525,6 @@ footer p{color:var(--ink-soft); font-size:13.5px; margin:4px 0;}
             <div class="field-hint">Например: ОН-12</div>
           </div>
         </div>
-        <div class="field">
-          <label for="fPass">Пароль</label>
-          <input id="fPass" type="password" placeholder="Минимум 6 символов" required minlength="6">
-        </div>
         <button class="btn" type="submit">Отправить заявку</button>
       </form>
     </div>
@@ -570,12 +566,11 @@ function submitReg(e){
   var contact = document.getElementById('fContact').value.trim();
   var course = document.getElementById('fCourse').value;
   var group = document.getElementById('fGroup').value.trim();
-  var pass = document.getElementById('fPass').value;
   var err = document.getElementById('regError');
 
   var contactOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact) || /^[\d\s()+-]{6,}$/.test(contact);
 
-  if(!name || !last || !contactOk || !course || !group || pass.length < 6){
+  if(!name || !last || !contactOk || !course || !group){
     err.classList.add('show');
     return false;
   }
