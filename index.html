@@ -503,6 +503,7 @@ footer p{color:var(--ink-soft); font-size:13.5px; margin:4px 0;}
       <p class="sub">Заполни заявку — с тобой свяжутся, когда откроется набор.</p>
       <p class="form-error" id="regError">Проверь, пожалуйста, обязательные поля.</p>
       <form id="regForm" onsubmit="return submitReg(event)">
+        <input type="text" id="fHoney" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;width:0" value="">
         <div class="field-row">
           <div class="field"><label for="fName">Имя</label><input id="fName" type="text" required></div>
           <div class="field"><label for="fLast">Фамилия</label><input id="fLast" type="text" required></div>
@@ -576,7 +577,7 @@ function submitReg(e){
   }
   err.classList.remove('show');
 
-  var data = { name: name, last: last, contact: contact, course: course, group: group, ts: Date.now() };
+  var data = { name: name, last: last, contact: contact, course: course, group: group, ts: Date.now(), hp: document.getElementById('fHoney').value };
   try{ localStorage.setItem('icefox_reg', JSON.stringify(data)); }catch(e){}
 
   var REG_ENDPOINT = "https://snowy-snow-d577.cluhenkovayyliya.workers.dev/";
